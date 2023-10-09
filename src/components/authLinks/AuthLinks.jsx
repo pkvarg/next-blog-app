@@ -9,6 +9,7 @@ const AuthLinks = () => {
 
   const { status } = useSession()
 
+  console.log(status)
   return (
     <>
       {status === 'unauthenticated' ? (

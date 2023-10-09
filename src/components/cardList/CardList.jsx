@@ -20,10 +20,7 @@ const getData = async (page, cat) => {
 }
 
 const CardList = async ({ page, cat }) => {
-  // const { posts, count } = await getData(page, cat);
-
-  // vymaz
-  const count = 5
+  const { posts, count } = await getData(page, cat)
 
   const POST_PER_PAGE = 2
 
@@ -33,11 +30,11 @@ const CardList = async ({ page, cat }) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
-      {/* <div className={styles.posts}>
+      <div className={styles.posts}>
         {posts?.map((item) => (
           <Card item={item} key={item._id} />
         ))}
-      </div> */}
+      </div>
       <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
     </div>
   )
