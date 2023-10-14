@@ -1,50 +1,52 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import styles from "./comments.module.css";
-import Image from "next/image";
-import useSWR from "swr";
-import { useSession } from "next-auth/react";
-import { useState } from "react";
+import Link from 'next/link'
+import styles from './comments.module.css'
+import Image from 'next/image'
+import useSWR from 'swr'
+import { useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 const fetcher = async (url) => {
-  const res = await fetch(url);
+  const res = await fetch(url)
 
-  const data = await res.json();
+  const data = await res.json()
 
   if (!res.ok) {
-    const error = new Error(data.message);
-    throw error;
+    const error = new Error(data.message)
+    throw error
   }
 
-  return data;
-};
+  return data
+}
 
 const Comments = ({ postSlug }) => {
-  const { status } = useSession();
+  const { status } = useSession()
+
+  const HOST = process.env.NEXT_PUBLIC_HOST
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `${HOST}/api/comments?postSlug=${postSlug}`,
     fetcher
-  );
+  )
 
-  const [desc, setDesc] = useState("");
+  const [desc, setDesc] = useState('')
 
   const handleSubmit = async () => {
-    await fetch("/api/comments", {
-      method: "POST",
+    await fetch('/api/comments', {
+      method: 'POST',
       body: JSON.stringify({ desc, postSlug }),
-    });
-    mutate();
-  };
+    })
+    mutate()
+  }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
-      {status === "authenticated" ? (
+      {status === 'authenticated' ? (
         <div className={styles.write}>
           <textarea
-            placeholder="write a comment..."
+            placeholder='write a comment...'
             className={styles.input}
             onChange={(e) => setDesc(e.target.value)}
           />
@@ -53,18 +55,18 @@ const Comments = ({ postSlug }) => {
           </button>
         </div>
       ) : (
-        <Link href="/login">Login to write a comment</Link>
+        <Link href='/login'>Login to write a comment</Link>
       )}
       <div className={styles.comments}>
         {isLoading
-          ? "loading"
+          ? 'loading'
           : data?.map((item) => (
-              <div className={styles.comment} key={item._id}>
+              <div className={styles.comment} key={item.id}>
                 <div className={styles.user}>
                   {item?.user?.image && (
                     <Image
                       src={item.user.image}
-                      alt=""
+                      alt=''
                       width={50}
                       height={50}
                       className={styles.image}
@@ -80,7 +82,7 @@ const Comments = ({ postSlug }) => {
             ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
