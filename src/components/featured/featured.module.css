@@ -3,8 +3,16 @@
 }
 
 .title {
-  font-size: 96px;
+  font-size: 40px;
   font-weight: 300;
+  text-align: center;
+}
+
+.sub {
+  text-align: center;
+  color: #2f943d;
+  font-size: 30px;
+  margin: 15px 0;
 }
 
 .post {
@@ -32,7 +40,8 @@
 }
 
 .postTitle {
-  font-size: 40px;
+  font-size: 30px;
+  font-weight: 100;
 }
 
 .postDesc {
@@ -46,6 +55,12 @@
   border: none;
   border-radius: 5px;
   width: max-content;
+}
+
+.button:hover {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
 }
 
 @media screen and (max-width: 1280px) {

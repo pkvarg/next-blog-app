@@ -1,15 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import styles from "./menuPosts.module.css"
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import styles from './menuPosts.module.css'
 
 const MenuPosts = ({ withImage }) => {
   return (
     <div className={styles.items}>
-      <Link href="/" className={styles.item}>
+      <Link href='/' className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image src='/fashion.png' alt='' fill className={styles.image} />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -23,10 +23,10 @@ const MenuPosts = ({ withImage }) => {
           </div>
         </div>
       </Link>
-      <Link href="/" className={styles.item}>
+      <Link href='/' className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image src='/fashion.png' alt='' fill className={styles.image} />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -42,10 +42,10 @@ const MenuPosts = ({ withImage }) => {
           </div>
         </div>
       </Link>
-      <Link href="/" className={styles.item}>
+      <Link href='/' className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image src='/fashion.png' alt='' fill className={styles.image} />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -59,10 +59,10 @@ const MenuPosts = ({ withImage }) => {
           </div>
         </div>
       </Link>
-      <Link href="/" className={styles.item}>
+      <Link href='/' className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image src='/fashion.png' alt='' fill className={styles.image} />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -79,7 +79,7 @@ const MenuPosts = ({ withImage }) => {
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default MenuPosts;
+export default MenuPosts
