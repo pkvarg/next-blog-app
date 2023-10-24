@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import styles from './card.module.css'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Card = ({ item, thek }) => {
+  const path = usePathname()
+  const write = path.includes('write')
+  const router = useRouter()
   return (
     <div className={styles.container} key={thek}>
       {item.img && (
@@ -28,6 +32,14 @@ const Card = ({ item, thek }) => {
         <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read More
         </Link>
+        {write && (
+          <p
+            className={styles.edit}
+            onClick={() => router.push(`/write/${item.id}`)}
+          >
+            Edit this post
+          </p>
+        )}
       </div>
     </div>
   )
