@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.link:hover {
+  color: #2f943d;
+}
+
 .burger {
   width: 20px;
   height: 16px;
@@ -17,7 +21,7 @@
   background-color: var(--textColor);
 }
 
-.responsiveMenu{
+.responsiveMenu {
   position: absolute;
   top: 100px;
   left: 0;
@@ -38,7 +42,7 @@
     display: flex;
   }
 
-  .link{
+  .link {
     display: none;
   }
 }

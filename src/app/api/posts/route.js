@@ -34,7 +34,6 @@ export const GET = async (req) => {
       )
     }
   } else {
-    console.log('going to get all')
     try {
       const posts = await prisma.post.findMany()
 

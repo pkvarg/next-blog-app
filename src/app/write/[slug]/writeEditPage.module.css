@@ -77,13 +77,13 @@
 }
 
 .publish {
-  position: absolute;
-  top: 0px;
-  right: 0px;
   padding: 10px 20px;
   border: none;
   background-color: #1a8917;
   color: white;
   cursor: pointer;
   border-radius: 20px;
+  width: 150px;
+  margin-left: 50px;
+  margin-top: 50px;
 }

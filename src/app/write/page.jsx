@@ -15,7 +15,6 @@ import {
 import { app } from '@/utils/firebase'
 import dynamic from 'next/dynamic'
 import EditPost from '@/components/editPost/EditPost'
-//import ReactQuill from "react-quill";
 
 const WritePage = () => {
   const { status } = useSession()

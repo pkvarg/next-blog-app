@@ -1,18 +1,27 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './writeEditPage.module.css'
-import dynamic from 'next/dynamic'
+import axios from 'axios'
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from 'firebase/storage'
+import { app } from '@/utils/firebase'
+import { useRouter } from 'next/navigation'
 
 const HOST = process.env.NEXT_PUBLIC_HOST
 
 const page = ({ params }) => {
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
-
   const { slug } = params
+  const router = useRouter()
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
   const [catSlug, setCatSlug] = useState('')
   const [img, setImg] = useState('')
+  const [file, setFile] = useState(null)
+  const [media, setMedia] = useState('')
 
   const [post, setPost] = useState()
 
@@ -36,7 +45,67 @@ const page = ({ params }) => {
     getData(slug)
   }, [])
 
-  console.log(desc)
+  useEffect(() => {
+    const storage = getStorage(app)
+    const upload = () => {
+      const name = new Date().getTime() + file.name
+      const storageRef = ref(storage, name)
+
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused')
+              break
+            case 'running':
+              console.log('Upload is running')
+              break
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL)
+          })
+        }
+      )
+    }
+
+    file && upload()
+  }, [file])
+
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.post(`/api/posts/edit/${slug}`, {
+        title,
+        desc: desc,
+        img: media,
+        slug: slugify(title),
+        catSlug: catSlug || 'general', //If not selected, choose the general category
+      })
+
+      if (res.status === 200) {
+        console.log(res)
+        router.push(`/write`)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div>
@@ -62,7 +131,11 @@ const page = ({ params }) => {
           <option value='coding'>coding</option>
         </select>
         <div className={styles.add}>
-          <img src={img} alt={img} />
+          {media ? (
+            <img src={media} alt='next-blog' />
+          ) : (
+            <img src={img} alt='no-img' />
+          )}
           <input
             type='file'
             id='image'
@@ -75,6 +148,9 @@ const page = ({ params }) => {
           onChange={(e) => setDesc(e.target.value)}
           placeholder='Tell your story...'
         ></textarea>
+        <button className={styles.publish} onClick={handleSubmit}>
+          Publikovať
+        </button>
       </div>
     </div>
   )
