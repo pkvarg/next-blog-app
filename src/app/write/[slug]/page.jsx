@@ -38,7 +38,8 @@ const page = ({ params }) => {
       if (data) {
         setCatSlug(data.catSlug)
         setDesc(data.desc)
-        setImg(data.img)
+
+        setMedia(data.img)
         setTitle(data.title)
       }
     }
@@ -107,6 +108,25 @@ const page = ({ params }) => {
     }
   }
 
+  const handleDelete = async () => {
+    const confirmed = window.confirm('Are you sure you want to delete?')
+
+    if (confirmed) {
+      try {
+        const res = await axios.delete(`/api/posts/edit/${slug}`)
+
+        if (res.status === 200) {
+          console.log(res)
+          router.push(`/write`)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      console.log('not delete')
+    }
+  }
+
   return (
     <div>
       <h1 className={styles.title}>Edit single blog</h1>
@@ -131,11 +151,7 @@ const page = ({ params }) => {
           <option value='coding'>coding</option>
         </select>
         <div className={styles.add}>
-          {media ? (
-            <img src={media} alt='next-blog' />
-          ) : (
-            <img src={img} alt='no-img' />
-          )}
+          {media && <img src={media} alt='next-blog' />}
           <input
             type='file'
             id='image'
@@ -150,6 +166,9 @@ const page = ({ params }) => {
         ></textarea>
         <button className={styles.publish} onClick={handleSubmit}>
           Publikovať
+        </button>
+        <button className={styles.delete} onClick={handleDelete}>
+          Vymazať
         </button>
       </div>
     </div>

@@ -87,3 +87,15 @@
   margin-left: 50px;
   margin-top: 50px;
 }
+
+.delete {
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 150px;
+  margin-left: 50px;
+  margin-top: 50px;
+}

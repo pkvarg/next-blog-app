@@ -51,3 +51,26 @@ export const POST = async (req, { params }) => {
     )
   }
 }
+
+// DELETE SINGLE POST By ID
+export const DELETE = async (req, { params }) => {
+  console.log('method', req.method)
+  const id = params.slug
+
+  try {
+    const post = await prisma.post.delete({
+      where: {
+        id: id,
+      },
+    })
+
+    return new NextResponse(
+      JSON.stringify({ message: 'Blog deleted!' }, { status: 200 })
+    )
+  } catch (err) {
+    console.log(err)
+    return new NextResponse(
+      JSON.stringify({ message: 'Something went wrong!' }, { status: 500 })
+    )
+  }
+}
