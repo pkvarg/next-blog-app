@@ -14,7 +14,7 @@ import Image from 'next/image'
 
 const HOST = process.env.NEXT_PUBLIC_HOST
 
-const page = ({ params }) => {
+const EditPage = ({ params }) => {
   const { slug } = params
   const router = useRouter()
   const [title, setTitle] = useState('')
@@ -178,4 +178,4 @@ const page = ({ params }) => {
   )
 }
 
-export default page
+export default EditPage

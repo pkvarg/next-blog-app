@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
+import axios from 'axios'
 
 const metadata = {
   title: 'Bible blog Contact',
@@ -13,13 +14,34 @@ const Contact = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault()
     console.log(name, email, message)
+    const bearerToken = process.env.NEXT_PUBLIC_VERCEL_TOKEN
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${bearerToken}`,
+      },
+    }
+    try {
+      const res = await axios.post(
+        '/api/sendEmail',
+        {
+          name,
+          email,
+          message,
+        },
+        config
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Let's Keep in Touch</h1>
+      <h1 className={styles.title}>Send me a Message</h1>
       <div className={styles.content}>
         <div className={styles.imgContainer}>
           <Image

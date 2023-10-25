@@ -9,7 +9,14 @@ const Featured = () => {
       <p className={styles.sub}>Refresh Your Spirit of Faith.</p>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src='/bible01.webp' alt='' fill className={styles.image} />
+          <Image
+            src='/bible01.webp'
+            alt='bible-blog'
+            width={550}
+            height={450}
+            priority
+            className={styles.image}
+          />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>
