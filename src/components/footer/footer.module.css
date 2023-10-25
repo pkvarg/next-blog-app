@@ -28,6 +28,10 @@
   font-weight: 300;
 }
 
+.link {
+  color: #454545;
+}
+
 .icons {
   margin-top: 10px;
   display: flex;

@@ -10,6 +10,7 @@ import {
 } from 'firebase/storage'
 import { app } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 const HOST = process.env.NEXT_PUBLIC_HOST
 
@@ -151,7 +152,9 @@ const page = ({ params }) => {
           <option value='coding'>coding</option>
         </select>
         <div className={styles.add}>
-          {media && <img src={media} alt='next-blog' />}
+          {media && (
+            <Image src={media} alt='next-blog' width={500} height={300} />
+          )}
           <input
             type='file'
             id='image'
