@@ -23,10 +23,13 @@ const fetcher = async (url) => {
 const Comments = ({ postSlug }) => {
   const { status } = useSession()
 
-  const HOST = process.env.NEXT_PUBLIC_HOST
+  //const HOST = process.env.NEXT_PUBLIC_HOST
 
+  // const { data, mutate, isLoading } = useSWR(
+  //   `${HOST}/api/comments?postSlug=${postSlug}`,
+  //   fetcher
   const { data, mutate, isLoading } = useSWR(
-    `${HOST}/api/comments?postSlug=${postSlug}`,
+    `/api/comments?postSlug=${postSlug}`,
     fetcher
   )
 

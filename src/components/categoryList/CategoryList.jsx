@@ -3,10 +3,11 @@ import styles from './categoryList.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const HOST = process.env.NEXT_PUBLIC_HOST
+// const HOST = process.env.NEXT_PUBLIC_HOST
 
 const getData = async () => {
-  const res = await fetch(`${HOST}/api/categories`, {
+  //const res = await fetch(`${HOST}/api/categories`, {
+  const res = await fetch(`/api/categories`, {
     cache: 'no-store',
   })
 

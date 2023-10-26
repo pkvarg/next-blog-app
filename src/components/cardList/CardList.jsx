@@ -4,10 +4,12 @@ import Pagination from '../pagination/Pagination'
 import Image from 'next/image'
 import Card from '../card/Card'
 
-const HOST = process.env.NEXT_PUBLIC_HOST
+//const HOST = process.env.NEXT_PUBLIC_HOST
 
 const getData = async (page, cat) => {
-  const res = await fetch(`${HOST}/api/posts?page=${page}&cat=${cat || ''}`, {
+  //const res = await fetch(`${HOST}/api/posts?page=${page}&cat=${cat || ''}`, {
+
+  const res = await fetch(`/api/posts?page=${page}&cat=${cat || ''}`, {
     cache: 'no-store',
   })
 
