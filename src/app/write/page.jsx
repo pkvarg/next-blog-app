@@ -13,12 +13,12 @@ import {
   getDownloadURL,
 } from 'firebase/storage'
 import { app } from '@/utils/firebase'
-import dynamic from 'next/dynamic'
+//import dynamic from 'next/dynamic'
 import EditPost from '@/components/editPost/EditPost'
 
 const WritePage = () => {
   const { status } = useSession()
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
+  //const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
   const router = useRouter()
 
   const [open, setOpen] = useState(false)
@@ -142,13 +142,13 @@ const WritePage = () => {
               </button>
             </div>
           )}
-          <ReactQuill
+
+          <textarea
             className={styles.textArea}
-            theme='bubble'
             value={value}
-            onChange={setValue}
+            onChange={(e) => setValue(e.target.value)}
             placeholder='Tell your story...'
-          />
+          ></textarea>
         </div>
         <button className={styles.publish} onClick={handleSubmit}>
           Publish

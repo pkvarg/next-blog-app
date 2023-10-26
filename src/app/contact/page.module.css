@@ -67,3 +67,7 @@
   color: #53c28b;
   background-color: white;
 }
+
+.password_group {
+  display: none;
+}

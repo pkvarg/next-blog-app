@@ -1,10 +1,10 @@
-.container{
+.container {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.select{
+.select {
   margin-bottom: 50px;
   padding: 10px 20px;
   margin-left: 50px;
@@ -45,7 +45,7 @@
   left: 50px;
 }
 
-.input{
+.input {
   padding: 50px;
   font-size: 64px;
   border: none;
@@ -54,15 +54,20 @@
   color: var(--textColor);
 }
 
-.input::placeholder{
+.input::placeholder {
   color: #b3b3b1;
 }
 
 .textArea {
-  width: 100%;
+  margin-top: 55px;
+  width: 75%;
+  height: 50%;
+  color: #1a8917;
+  font-size: 25px;
+  padding-left: 5px;
 }
 
-.publish{
+.publish {
   position: absolute;
   top: 0px;
   right: 0px;

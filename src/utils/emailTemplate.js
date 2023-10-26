@@ -75,9 +75,9 @@ export const emailTemplate = (name, email, message) => (
         <>
           <Heading style={h1}>Hello {name}</Heading>
           <Text style={{ ...text, marginBottom: '14px' }}>
-            Your email: {email}
             Your message: {message}
           </Text>
+          <Text>Your email: {email}</Text>
         </>
 
         <Text style={footer}>Bible Blog</Text>
