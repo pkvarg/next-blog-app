@@ -3,11 +3,10 @@ import styles from './singlePage.module.css'
 import Image from 'next/image'
 import Comments from '@/components/comments/Comments'
 
-//const HOST = process.env.NEXT_PUBLIC_HOST
+const HOST = process.env.NEXT_PUBLIC_HOST
 
 const getData = async (slug) => {
-  // const res = await fetch(`${HOST}/api/posts/${slug}`, {
-  const res = await fetch(`/api/posts/${slug}`, {
+  const res = await fetch(`${HOST}/api/posts/${slug}`, {
     cache: 'no-store',
   })
 

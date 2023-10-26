@@ -12,7 +12,7 @@ import { app } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
-//const HOST = process.env.NEXT_PUBLIC_HOST
+const HOST = process.env.NEXT_PUBLIC_HOST
 
 const EditPage = ({ params }) => {
   const { slug } = params
@@ -28,9 +28,7 @@ const EditPage = ({ params }) => {
 
   useEffect(() => {
     const getData = async (slug) => {
-      //const res = await fetch(`${HOST}/api/posts/edit/${slug}`, {
-
-      const res = await fetch(`/api/posts/edit/${slug}`, {
+      const res = await fetch(`${HOST}/api/posts/edit/${slug}`, {
         cache: 'no-store',
       })
       const data = await res.json()

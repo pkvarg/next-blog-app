@@ -4,12 +4,10 @@ import styles from './editPost.module.css'
 import Pagination from '../pagination/Pagination'
 import { useRouter } from 'next/navigation'
 
-// const HOST = process.env.NEXT_PUBLIC_HOST
+const HOST = process.env.NEXT_PUBLIC_HOST
 
 const getData = async (page, cat) => {
-  // const res = await fetch(`${HOST}/api/posts`, {
-
-  const res = await fetch(`/api/posts`, {
+  const res = await fetch(`${HOST}/api/posts`, {
     cache: 'no-store',
   })
 
