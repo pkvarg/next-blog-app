@@ -19,6 +19,7 @@ const EditPage = ({ params }) => {
   const router = useRouter()
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
+  const [intro, setIntro] = useState('')
   const [catSlug, setCatSlug] = useState('')
   const [img, setImg] = useState('')
   const [file, setFile] = useState(null)
@@ -95,6 +96,7 @@ const EditPage = ({ params }) => {
       const res = await axios.post(`/api/posts/edit/${slug}`, {
         title,
         desc: desc,
+        intro: intro,
         img: media,
         slug: slugify(title),
         catSlug: catSlug || 'general', //If not selected, choose the general category
@@ -144,16 +146,23 @@ const EditPage = ({ params }) => {
           value={catSlug}
           onChange={(e) => setCatSlug(e.target.value)}
         >
-          <option value='style'>style</option>
-          <option value='fashion'>fashion</option>
-          <option value='food'>food</option>
+          <option value='old-testament'>Old Testament</option>
+          <option value='new-testament'>New Testament</option>
+          <option value='bible'>Bible</option>
           <option value='culture'>culture</option>
           <option value='travel'>travel</option>
           <option value='coding'>coding</option>
         </select>
         <div className={styles.add}>
           {media && (
-            <Image src={media} alt='next-blog' width={500} height={300} />
+            <Image
+              src={media}
+              alt='next-blog'
+              width={0}
+              height={0}
+              sizes='100vw'
+              style={{ width: '25%', height: 'auto' }}
+            />
           )}
           <input
             type='file'
@@ -163,9 +172,13 @@ const EditPage = ({ params }) => {
         </div>
         <textarea
           className={styles.textArea}
+          value={intro}
+          onChange={(e) => setIntro(e.target.value)}
+        ></textarea>
+        <textarea
+          className={styles.textArea}
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
-          placeholder='Tell your story...'
         ></textarea>
         <button className={styles.publish} onClick={handleSubmit}>
           Publikovať

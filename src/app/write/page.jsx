@@ -25,6 +25,7 @@ const WritePage = () => {
   const [file, setFile] = useState(null)
   const [media, setMedia] = useState('')
   const [value, setValue] = useState('')
+  const [intro, setIntro] = useState('')
   const [title, setTitle] = useState('')
   const [catSlug, setCatSlug] = useState('')
 
@@ -84,6 +85,7 @@ const WritePage = () => {
       method: 'POST',
       body: JSON.stringify({
         title,
+        intro,
         desc: value,
         img: media,
         slug: slugify(title),
@@ -110,9 +112,9 @@ const WritePage = () => {
           className={styles.select}
           onChange={(e) => setCatSlug(e.target.value)}
         >
-          <option value='style'>style</option>
-          <option value='fashion'>fashion</option>
-          <option value='food'>food</option>
+          <option value='old-testament'>Old Testament</option>
+          <option value='new-testament'>New Testament</option>
+          <option value='bible'>Bible</option>
           <option value='culture'>culture</option>
           <option value='travel'>travel</option>
           <option value='coding'>coding</option>
@@ -142,21 +144,35 @@ const WritePage = () => {
               </button>
             </div>
           )}
-
-          <textarea
-            className={styles.textArea}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder='Tell your story...'
-          ></textarea>
+          <div className={styles.textPlusImg}>
+            <textarea
+              className={styles.textArea}
+              value={intro}
+              onChange={(e) => setIntro(e.target.value)}
+              placeholder='Intro...'
+            ></textarea>
+            <textarea
+              className={styles.textArea}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder='Tell your story...'
+            ></textarea>
+            <Image
+              src={media}
+              width={0}
+              height={0}
+              sizes='100vw'
+              style={{ width: '25%', height: 'auto' }}
+            />
+          </div>
         </div>
+
         <button className={styles.publish} onClick={handleSubmit}>
           Publish
         </button>
       </div>
-      <div>
-        <EditPost />
-      </div>
+      <EditPost />
+      <div></div>
     </>
   )
 }

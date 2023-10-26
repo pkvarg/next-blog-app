@@ -27,9 +27,8 @@ export const POST = async (req, { params }) => {
   const id = params.slug
   console.log(id)
   const body = await req.json()
-  const { title, desc, img, slug, catSlug } = body
+  const { title, desc, intro, img, slug, catSlug } = body
   try {
-    console.log(title, desc, img, slug, catSlug)
     const post = await prisma.post.update({
       where: {
         id: id,
@@ -37,6 +36,8 @@ export const POST = async (req, { params }) => {
       data: {
         title: title,
         desc: desc,
+        intro,
+        intro,
         img: img,
         slug: slug,
         catSlug: catSlug,

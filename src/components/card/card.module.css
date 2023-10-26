@@ -26,6 +26,10 @@
   color: gray;
 }
 
+.intro {
+  text-align: justify;
+}
+
 .category {
   color: crimson;
   font-weight: 500;

@@ -1,13 +1,12 @@
-.title{
-  background-color: coral;
+.title {
+  background-color: rgb(5, 34, 90);
   color: white;
   padding: 5px 10px;
   text-align: center;
   text-transform: capitalize;
 }
 
-.content{
+.content {
   display: flex;
   gap: 50px;
 }
-

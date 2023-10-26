@@ -12,7 +12,12 @@ const Card = ({ item, thek }) => {
     <div className={styles.container} key={thek}>
       {item.img && (
         <div className={styles.imageContainer}>
-          <Image src={item.img} alt='' fill className={styles.image} />
+          <Image
+            src={item.img}
+            alt='blog-image'
+            fill
+            className={styles.image}
+          />
         </div>
       )}
       <div className={styles.textContainer}>
@@ -26,10 +31,11 @@ const Card = ({ item, thek }) => {
           <h1>{item.title}</h1>
         </Link>
         {/* <p className={styles.desc}>{item.desc.substring(0, 60)}</p> */}
-        <div
+        {/* <div
           className={styles.desc}
           dangerouslySetInnerHTML={{ __html: item?.desc.substring(0, 60) }}
-        />
+        /> */}
+        <p className={styles.intro}>{item.intro}</p>
         <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read More
         </Link>
