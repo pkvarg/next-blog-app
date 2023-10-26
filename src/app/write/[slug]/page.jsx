@@ -45,7 +45,7 @@ const EditPage = ({ params }) => {
       }
     }
     getData(slug)
-  }, [])
+  }, [slug])
 
   useEffect(() => {
     const storage = getStorage(app)
