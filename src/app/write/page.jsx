@@ -133,14 +133,14 @@ const WritePage = () => {
               />
               <button className={styles.addButton}>
                 <label htmlFor='image'>
-                  <Image src='/image.png' alt='' width={16} height={16} />
+                  <Image src='/image.png' alt='add' width={16} height={16} />
                 </label>
               </button>
               <button className={styles.addButton}>
-                <Image src='/external.png' alt='' width={16} height={16} />
+                <Image src='/external.png' alt='ext' width={16} height={16} />
               </button>
               <button className={styles.addButton}>
-                <Image src='/video.png' alt='' width={16} height={16} />
+                <Image src='/video.png' alt='vid' width={16} height={16} />
               </button>
             </div>
           )}
@@ -157,13 +157,15 @@ const WritePage = () => {
               onChange={(e) => setValue(e.target.value)}
               placeholder='Tell your story...'
             ></textarea>
-            <Image
-              src={media}
-              width={0}
-              height={0}
-              sizes='100vw'
-              style={{ width: '25%', height: 'auto' }}
-            />
+            {media && (
+              <Image
+                src={media}
+                width={0}
+                height={0}
+                sizes='100vw'
+                style={{ width: '25%', height: 'auto' }}
+              />
+            )}
           </div>
         </div>
 

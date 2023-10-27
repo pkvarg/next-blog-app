@@ -11,6 +11,7 @@ import {
 import { app } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { toast } from 'react-hot-toast'
 
 const HOST = process.env.NEXT_PUBLIC_HOST
 
@@ -40,7 +41,7 @@ const EditPage = ({ params }) => {
       if (data) {
         setCatSlug(data.catSlug)
         setDesc(data.desc)
-
+        setIntro(data.intro)
         setMedia(data.img)
         setTitle(data.title)
       }
@@ -120,9 +121,11 @@ const EditPage = ({ params }) => {
 
         if (res.status === 200) {
           console.log(res)
+          toast.success('Deleted')
           router.push(`/write`)
         }
       } catch (error) {
+        toast.error(error.message)
         console.log(error)
       }
     } else {

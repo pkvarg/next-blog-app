@@ -22,8 +22,6 @@ const SinglePage = async ({ params }) => {
 
   const data = await getData(slug)
 
-  console.log('dt', data)
-
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
@@ -50,11 +48,12 @@ const SinglePage = async ({ params }) => {
           <div className={styles.imageContainer}>
             <Image
               src={data.img}
-              alt=''
-              width={0}
-              height={0}
-              sizes='100vw'
-              style={{ width: '75%', height: 'auto', paddingTop: '7.5%' }}
+              alt='next-img'
+              fill
+              // width={0}
+              // height={0}
+              // sizes='100vw'
+              // style={{ width: '75%', height: '60%', paddingTop: '7.5%' }}
             />
           </div>
         )}

@@ -19,6 +19,12 @@
   gap: 20px;
 }
 
+.imageContainer {
+  flex: 1;
+  height: 350px;
+  position: relative;
+}
+
 .userImageContainer {
   width: 50px;
   height: 50px;
@@ -40,12 +46,6 @@
 .username {
   font-size: 20px;
   font-weight: 500;
-}
-
-.imageContainer {
-  flex: 1;
-  height: 350px;
-  position: relative;
 }
 
 .image {
