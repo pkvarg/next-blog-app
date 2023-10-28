@@ -1,8 +1,12 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import styles from './featured.module.css'
 import Image from 'next/image'
+import { facts } from './bibleFacts'
 
 const Featured = () => {
+  const [showFacts, setShowFacts] = useState(false)
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Welcome to the Bible Blog</h1>
@@ -25,9 +29,34 @@ const Featured = () => {
           <p className={styles.postDesc}>
             It penetrates even to dividing soul and spirit... Heb 4:12
           </p>
-          <button className={styles.button}>Read More</button>
+          <button
+            onClick={() => setShowFacts((prev) => !prev)}
+            className={styles.button}
+          >
+            Read More
+          </button>
         </div>
       </div>
+      {showFacts && (
+        <div>
+          <h1 className={styles.factstitle}>Some Bible Facts</h1>
+
+          {facts.map((fact) => {
+            return (
+              <div key={fact.id}>
+                <p className={styles.factssub}>{fact.title}</p>
+                {fact.points.map((point, index) => {
+                  return (
+                    <p key={index} className={styles.fact}>
+                      - {point.point}
+                    </p>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

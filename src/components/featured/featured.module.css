@@ -63,6 +63,23 @@
   border: 1px solid white;
 }
 
+.factstitle {
+  font-size: 37.5px;
+  margin: 15px 0;
+  font-weight: 300;
+}
+
+.factssub {
+  color: #1a8917;
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.fact {
+  font-size: 25px;
+  color: grey;
+}
+
 @media screen and (max-width: 1280px) {
   .title {
     font-size: 72px;
