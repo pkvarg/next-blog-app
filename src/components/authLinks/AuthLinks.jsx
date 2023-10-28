@@ -24,7 +24,11 @@ const AuthLinks = () => {
         </Link>
       ) : (
         <>
-          {email === enableWriteEmail && <Link href='/write'>Write</Link>}
+          {email === enableWriteEmail && (
+            <Link href='/write' className={styles.link}>
+              Write
+            </Link>
+          )}
           <span className={styles.link} onClick={signOut}>
             Logout
           </span>
@@ -37,13 +41,17 @@ const AuthLinks = () => {
       </div>
       {open && (
         <div className={styles.responsiveMenu}>
-          <Link href='/'>Homepage</Link>
-          <Link href='/'>About</Link>
-          <Link href='/'>Contact</Link>
-          {status === 'notauthenticated' ? (
+          <Link href='/blog'>Blog</Link>
+          <Link href='/surveys'>Surveys</Link>
+          <Link href='/contact'>Contact</Link>
+
+          {status === 'unauthenticated' ? (
             <Link href='/login'>Login</Link>
           ) : (
-            <span className={styles.link}>Logout</span>
+            <>
+              {email === enableWriteEmail && <Link href='/write'>Write</Link>}
+              <span onClick={signOut}>Logout</span>
+            </>
           )}
         </div>
       )}
