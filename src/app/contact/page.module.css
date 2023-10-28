@@ -1,6 +1,3 @@
-.container {
-}
-
 .title {
   font-size: 45px;
   margin: 80px;
@@ -26,10 +23,10 @@
 
 @keyframes move {
   from {
-    transform: translateY(-15px);
+    transform: scale(1.25);
   }
   to {
-    transform: translateY(0px) scale(1.03);
+    transform: scale(1.28);
   }
 }
 

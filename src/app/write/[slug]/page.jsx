@@ -28,6 +28,8 @@ const EditPage = ({ params }) => {
 
   const [post, setPost] = useState()
 
+  console.log(catSlug)
+
   useEffect(() => {
     const getData = async (slug) => {
       const res = await fetch(`${HOST}/api/posts/edit/${slug}`, {
@@ -149,6 +151,7 @@ const EditPage = ({ params }) => {
           value={catSlug}
           onChange={(e) => setCatSlug(e.target.value)}
         >
+          <option>Chosse a Category</option>
           <option value='old-testament'>Old Testament</option>
           <option value='new-testament'>New Testament</option>
           <option value='bible'>Bible</option>

@@ -54,6 +54,7 @@
 
 .listTitle {
   font-weight: bold;
+  color: #c8c3c3;
 }
 
 @media screen and (max-width: 1024px) {

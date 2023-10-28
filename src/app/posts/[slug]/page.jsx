@@ -34,6 +34,7 @@ const SinglePage = async ({ params }) => {
                   src={data.user.image}
                   alt='blog-img'
                   fill
+                  sizes='x'
                   className={styles.avatar}
                 />
               </div>
@@ -47,13 +48,13 @@ const SinglePage = async ({ params }) => {
         {data?.img && (
           <div className={styles.imageContainer}>
             <Image
+              priority
               src={data.img}
               alt='next-img'
-              fill
-              // width={0}
-              // height={0}
-              // sizes='100vw'
-              // style={{ width: '75%', height: '60%', paddingTop: '7.5%' }}
+              width={0}
+              height={0}
+              sizes='100vw'
+              style={{ width: '100%', height: '100%', paddingTop: '7.5%' }}
             />
           </div>
         )}
@@ -68,7 +69,7 @@ const SinglePage = async ({ params }) => {
             <Comments postSlug={slug} />
           </div>
         </div>
-        <Menu />
+        {/* <Menu /> */}
       </div>
     </div>
   )

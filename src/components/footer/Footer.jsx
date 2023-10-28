@@ -32,7 +32,7 @@ const Footer = () => {
           <Link href='/'>About</Link>
           <Link href='/'>Contact</Link>
         </div>
-        <div className={styles.list}>
+        {/* <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
           <Link href='/'>Style</Link>
           <Link href='/'>Fashion</Link>
@@ -45,7 +45,7 @@ const Footer = () => {
           <Link href='/'>Instagram</Link>
           <Link href='/'>Tiktok</Link>
           <Link href='/'>Youtube</Link>
-        </div>
+        </div> */}
       </div>
     </div>
   )

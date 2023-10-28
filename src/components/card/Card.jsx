@@ -16,6 +16,10 @@ const Card = ({ item, thek }) => {
             src={item.img}
             alt='blog-image'
             fill
+            width={0}
+            height={0}
+            sizes='100vw'
+            style={{ width: '100%', height: '100%' }}
             className={styles.image}
           />
         </div>

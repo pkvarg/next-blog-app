@@ -13,13 +13,18 @@ import {
   getDownloadURL,
 } from 'firebase/storage'
 import { app } from '@/utils/firebase'
-//import dynamic from 'next/dynamic'
 import EditPost from '@/components/editPost/EditPost'
 
 const WritePage = () => {
-  const { status } = useSession()
-  //const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
+  const { status, data: session } = useSession()
   const router = useRouter()
+  const enableWriteEmail = process.env.NEXT_PUBLIC_ADMIN
+
+  useEffect(() => {
+    if (session?.user.email !== enableWriteEmail) {
+      router.push('/')
+    }
+  }, [])
 
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
