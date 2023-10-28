@@ -28,11 +28,11 @@ const WritePage = () => {
   const [title, setTitle] = useState('')
   const [catSlug, setCatSlug] = useState('')
 
-  useEffect(() => {
-    if (session?.user.email !== enableWriteEmail) {
-      router.push('/')
-    }
-  }, [session, enableWriteEmail, router])
+  // useEffect(() => {
+  //   if (session?.user.email !== enableWriteEmail) {
+  //     router.push('/')
+  //   }
+  // }, [session, enableWriteEmail, router])
 
   useEffect(() => {
     const storage = getStorage(app)
@@ -105,82 +105,83 @@ const WritePage = () => {
   }
 
   return (
-    <>
-      <div className={styles.container}>
-        <input
-          type='text'
-          placeholder='Title'
-          className={styles.input}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <select
-          className={styles.select}
-          onChange={(e) => setCatSlug(e.target.value)}
-        >
-          <option value='old-testament'>Old Testament</option>
-          <option value='new-testament'>New Testament</option>
-          <option value='bible'>Bible</option>
-          <option value='culture'>culture</option>
-          <option value='travel'>travel</option>
-          <option value='coding'>coding</option>
-        </select>
-        <div className={styles.editor}>
-          <button className={styles.button} onClick={() => setOpen(!open)}>
-            <Image src='/plus.png' alt='' width={16} height={16} />
-          </button>
-          {open && (
-            <div className={styles.add}>
-              <input
-                type='file'
-                id='image'
-                onChange={(e) => setFile(e.target.files[0])}
-                style={{ display: 'none' }}
-              />
-              <button className={styles.addButton}>
-                <label htmlFor='image'>
-                  <Image src='/image.png' alt='add' width={16} height={16} />
-                </label>
-              </button>
-              <button className={styles.addButton}>
-                <Image src='/external.png' alt='ext' width={16} height={16} />
-              </button>
-              <button className={styles.addButton}>
-                <Image src='/video.png' alt='vid' width={16} height={16} />
-              </button>
-            </div>
-          )}
-          <div className={styles.textPlusImg}>
-            <textarea
-              className={styles.textArea}
-              value={intro}
-              onChange={(e) => setIntro(e.target.value)}
-              placeholder='Intro...'
-            ></textarea>
-            <textarea
-              className={styles.textArea}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              placeholder='Tell your story...'
-            ></textarea>
-            {media && (
-              <Image
-                src={media}
-                width={0}
-                height={0}
-                sizes='100vw'
-                style={{ width: '25%', height: 'auto' }}
-              />
+    session?.user.email === enableWriteEmail && (
+      <>
+        <div className={styles.container}>
+          <input
+            type='text'
+            placeholder='Title'
+            className={styles.input}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <select
+            className={styles.select}
+            onChange={(e) => setCatSlug(e.target.value)}
+          >
+            <option value='old-testament'>Old Testament</option>
+            <option value='new-testament'>New Testament</option>
+            <option value='bible'>Bible</option>
+            <option value='culture'>culture</option>
+            <option value='travel'>travel</option>
+            <option value='coding'>coding</option>
+          </select>
+          <div className={styles.editor}>
+            <button className={styles.button} onClick={() => setOpen(!open)}>
+              <Image src='/plus.png' alt='' width={16} height={16} />
+            </button>
+            {open && (
+              <div className={styles.add}>
+                <input
+                  type='file'
+                  id='image'
+                  onChange={(e) => setFile(e.target.files[0])}
+                  style={{ display: 'none' }}
+                />
+                <button className={styles.addButton}>
+                  <label htmlFor='image'>
+                    <Image src='/image.png' alt='add' width={16} height={16} />
+                  </label>
+                </button>
+                <button className={styles.addButton}>
+                  <Image src='/external.png' alt='ext' width={16} height={16} />
+                </button>
+                <button className={styles.addButton}>
+                  <Image src='/video.png' alt='vid' width={16} height={16} />
+                </button>
+              </div>
             )}
+            <div className={styles.textPlusImg}>
+              <textarea
+                className={styles.textArea}
+                value={intro}
+                onChange={(e) => setIntro(e.target.value)}
+                placeholder='Intro...'
+              ></textarea>
+              <textarea
+                className={styles.textArea}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder='Tell your story...'
+              ></textarea>
+              {media && (
+                <Image
+                  src={media}
+                  width={0}
+                  height={0}
+                  sizes='100vw'
+                  style={{ width: '25%', height: 'auto' }}
+                />
+              )}
+            </div>
           </div>
-        </div>
 
-        <button className={styles.publish} onClick={handleSubmit}>
-          Publish
-        </button>
-      </div>
-      <EditPost />
-      <div></div>
-    </>
+          <button className={styles.publish} onClick={handleSubmit}>
+            Publish
+          </button>
+        </div>
+        <EditPost />
+      </>
+    )
   )
 }
 
