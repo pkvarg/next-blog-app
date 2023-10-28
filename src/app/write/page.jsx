@@ -20,12 +20,6 @@ const WritePage = () => {
   const router = useRouter()
   const enableWriteEmail = process.env.NEXT_PUBLIC_ADMIN
 
-  useEffect(() => {
-    if (session?.user.email !== enableWriteEmail) {
-      router.push('/')
-    }
-  }, [])
-
   const [open, setOpen] = useState(false)
   const [file, setFile] = useState(null)
   const [media, setMedia] = useState('')
@@ -103,6 +97,12 @@ const WritePage = () => {
       router.push(`/posts/${data.slug}`)
     }
   }
+
+  useEffect(() => {
+    if (session?.user.email !== enableWriteEmail) {
+      router.push('/')
+    }
+  }, [session])
 
   return (
     <>
