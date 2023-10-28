@@ -29,6 +29,12 @@ const WritePage = () => {
   const [catSlug, setCatSlug] = useState('')
 
   useEffect(() => {
+    if (session?.user.email !== enableWriteEmail) {
+      router.push('/')
+    }
+  }, [session, enableWriteEmail, router])
+
+  useEffect(() => {
     const storage = getStorage(app)
     const upload = () => {
       const name = new Date().getTime() + file.name
@@ -97,12 +103,6 @@ const WritePage = () => {
       router.push(`/posts/${data.slug}`)
     }
   }
-
-  useEffect(() => {
-    if (session?.user.email !== enableWriteEmail) {
-      router.push('/')
-    }
-  }, [session])
 
   return (
     <>
