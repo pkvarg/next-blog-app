@@ -83,8 +83,17 @@
   }
 }
 @media screen and (max-width: 1024px) {
-  .imageContainer {
+  /* .imageContainer {
     display: none;
+  } */
+
+  .imageContainer {
+    flex: none;
+    display: flex;
+  }
+
+  .infoContainer {
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 640px) {

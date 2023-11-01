@@ -23,7 +23,6 @@ const Contact = () => {
   const handleSubmitForm = async (e) => {
     e.preventDefault()
 
-    console.log(name, email, message)
     const bearerToken = process.env.NEXT_PUBLIC_VERCEL_TOKEN
 
     const config = {

@@ -92,7 +92,18 @@
   }
 
   .imgContainer {
-    display: none;
+    flex: none;
+
+    /* display: none; */
+  }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    width: 100%;
   }
 }
 
