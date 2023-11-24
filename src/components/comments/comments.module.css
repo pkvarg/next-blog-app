@@ -5,6 +5,7 @@
 .title {
   color: var(--softTextColor);
   margin-bottom: 30px;
+  font-size: 25px;
 }
 
 .write {
@@ -29,11 +30,15 @@
   cursor: pointer;
 }
 
-.comments{
+.link {
+  font-size: 20px;
+}
+
+.comments {
   margin-top: 50px;
 }
 
-.comment{
+.comment {
   margin-bottom: 50px;
 }
 
@@ -60,11 +65,11 @@
   font-weight: 500;
 }
 
-.date{
+.date {
   font-size: 14px;
 }
 
-.desc{
+.desc {
   font-size: 18px;
   font-weight: 300;
 }

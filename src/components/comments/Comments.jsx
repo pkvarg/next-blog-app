@@ -55,7 +55,9 @@ const Comments = ({ postSlug }) => {
           </button>
         </div>
       ) : (
-        <Link href='/login'>Login to write a comment</Link>
+        <Link className={styles.link} href='/login'>
+          Login to write a comment
+        </Link>
       )}
       <div className={styles.comments}>
         {isLoading
@@ -74,7 +76,9 @@ const Comments = ({ postSlug }) => {
                   )}
                   <div className={styles.userInfo}>
                     <span className={styles.username}>{item.user.name}</span>
-                    <span className={styles.date}>{item.createdAt}</span>
+                    <span className={styles.date}>
+                      {item.createdAt.slice(0, 10)}
+                    </span>
                   </div>
                 </div>
                 <p className={styles.desc}>{item.desc}</p>
