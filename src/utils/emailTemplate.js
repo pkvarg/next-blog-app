@@ -7,7 +7,6 @@ import {
   Preview,
   Text,
 } from '@react-email/components'
-import { Link } from '@react-email/link'
 import * as React from 'react'
 
 const main = {
